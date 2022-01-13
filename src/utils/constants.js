@@ -35,6 +35,7 @@ export const ERROR_TYPES = {
     failedToApplyCode: 'failedToApplyCode',
     failedToAddBuilding: 'failedToAddBuilding',
     failedToCreateInvite: 'failedToCreateInvite',
+    failedToGenerateCode: 'failedToGenerateCode',
     noBuilding: 'noBuilding',
     noPermission: 'noPermission',
     noCode: 'noCode',
