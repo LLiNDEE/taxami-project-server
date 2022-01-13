@@ -2,6 +2,7 @@ import dotenv from 'dotenv'
 dotenv.config()
 
 export const MONGOOSE_CONNECTION_KEY = process.env.MONGOOSE_CONNECTION_KEY
+export const JWT_SECRET = process.env.JWT_SECRET
 
 export const RegExpEmail = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/
 
