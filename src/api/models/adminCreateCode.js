@@ -5,11 +5,12 @@ import { Code } from "./models.js"
 export const adminCreateCode = async (user_id, type, building_id) => {
     try{
 
-        if(building_id && type !== 'subscription'){
+        if(building_id && type === 'invite'){
             const code = new Code({
                 user_id: user_id,
                 building_id: building_id,
             })
+
             await code.save()
             return{
                 type: 'success',
