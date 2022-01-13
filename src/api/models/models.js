@@ -17,7 +17,6 @@ const USER_SCHEMA = new Schema({
     created: { type: Date, default: Date.now() },
 })
 
-
 const TASK_SCHEMA = new Schema({
     _id: { type: String, default: () => uuidv4()},
     building_id: String,
@@ -46,3 +45,5 @@ const CODES_SCHEMA = new Schema({
 export const User = mongoose.model('users', USER_SCHEMA)
 export const Building = mongoose.model('buildings', BUILDING_SCHEMA)
 export const Code = mongoose.model('codes', CODES_SCHEMA)
+
+export const Admin = mongoose.model('taxami-admin-users', USER_SCHEMA)
