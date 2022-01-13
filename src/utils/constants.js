@@ -40,15 +40,18 @@ export const ERROR_TYPES = {
     noCode: 'noCode',
     noUser: 'noUser',
     alreadyMember: 'alreadyMember',
+    codeError: 'codeError',
     error: 'error',
 }
 
 export const ROUTES = {
+    admin_generate_code: '/admin/generate/code', 
     user_create: '/user/create',
     user_login: '/user/login',
     user_building_invite: '/user/join',
     building_create: '/building/create',
     building_invite: '/building/generate/invite',
+    check_code: '/user/check/code',
 }
 
 const LOGIN_KEYS = {
@@ -77,10 +80,21 @@ const USER_JOIN_INVITE = {
     invite_code: 'invite_code',
 }
 
+const CHECK_CODE_KEYS = {
+    code: 'code'
+}
+
+const ADMIN_GENERATE_CODE_KEYS = {
+    user_id: 'user_id',
+    type: 'type',
+}
+
 export const PATH_KEYS = {
     [ROUTES.user_login]: LOGIN_KEYS,
     [ROUTES.user_create]: USER_CREATE_KEYS,
     [ROUTES.building_create]: CREATE_BUILDING_KEYS,
     [ROUTES.building_invite]: CREATE_INVITE_KEYS,
     [ROUTES.user_building_invite]: USER_JOIN_INVITE,
+    [ROUTES.check_code]: CHECK_CODE_KEYS,
+    [ROUTES.admin_generate_code]: ADMIN_GENERATE_CODE_KEYS,
 }
