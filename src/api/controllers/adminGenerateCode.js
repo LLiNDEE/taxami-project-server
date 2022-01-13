@@ -9,12 +9,19 @@ export const adminGenerateCode = async (req, res) => {
 
         const { user_id, type } = req.body
 
-        const createCodeResponse = await adminCreateCode(user_id, type)
-        if(!createCodeResponse.success) return res.status(400).send(generateError('failed'))
+        if(req.body?.building_id && type === 'invite'){
+            const createCodeResponse = await adminCreateCode(user_id, type, req.body.building_id)
+            if(!createCodeResponse.success) return res.status(400).send(generateError('failed'))
+            res.status(200).send(generateSuccessResponse({code: createCodeResponse.code}))
+        }else{
+            const createCodeResponse = await adminCreateCode(user_id, type)
+            if(!createCodeResponse.success) return res.status(400).send(generateError('failed'))
+            res.status(200).send(generateSuccessResponse({code: createCodeResponse.code}))
+        }
 
-        res.status(200).send(generateSuccessResponse({code: createCodeResponse.code}))
 
     }catch(error){
         console.log(error)
+        res.status(400).send(generateError('failedToGenerateCode'))
     }
 }
