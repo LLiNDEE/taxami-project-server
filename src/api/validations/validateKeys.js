@@ -13,6 +13,23 @@ export const validateKeys = (data, keys) =>{
         }
     }
 
+    let ERROR = false
+    const invalid_params = []
+
+    Object.entries(totalKeys).forEach(([k, v]) => {
+        if(data[k] === "" || !data[k] || data[k] == ""){
+            invalid_params.push(totalKeys[k])
+        }
+    })
+
+    if(invalid_params.length > 0){
+        return {
+            status: false,
+            type: 'invalidParams',
+            invalid_params: invalid_params,
+        }
+    }
+
     return {
         status: true,
         type: "success"
