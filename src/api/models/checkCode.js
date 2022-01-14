@@ -11,29 +11,52 @@ export const checkCode = async code => {
             }
         }
 
-        const query = {_id: codeOBJ[0].building_id}
+        if(codeOBJ[0].type === 'invite'){
+            const query = {_id: codeOBJ[0].building_id}
 
-        const building = await Building.findOne(query)
-        if(!building) {
+            const building = await Building.findOne(query)
+            if(!building) {
+                return {
+                    type: 'noBuilding',
+                    success: false
+                }
+            }
+    
+            const data = {
+                code_type: codeOBJ[0].type,
+                building: {
+                    building_name: building.building_name,
+                    _id: building._id,
+                }
+            }
+    
             return {
-                type: 'noBuilding',
-                success: false
+                type: 'success',
+                success: true,
+                data: data,
             }
         }
 
-        const data = {
-            code_type: codeOBJ[0].type,
-            building: {
-                building_name: building.building_name,
-                _id: building._id
+        if(codeOBJ[0].type === 'subscription'){
+            const data = {
+                code_type: codeOBJ[0].type,
+                created: codeOBJ[0].created,
             }
+
+            return {
+                type: 'success',
+                success: true,
+                data: data,
+            }
+
         }
 
-        return {
-            type: 'success',
-            success: true,
-            data: data,
-        }
+
+        
+        
+
+
+
 
     }catch(error){
         console.log(error)
