@@ -50,9 +50,9 @@ export const ROUTES = {
     user_create: '/user/create',
     user_login: '/user/login',
     user_building_invite: '/user/join',
+    check_code: '/user/check/code',
     building_create: '/building/create',
     building_invite: '/building/generate/invite',
-    check_code: '/user/check/code',
 }
 
 const LOGIN_KEYS = {
