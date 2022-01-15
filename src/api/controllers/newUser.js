@@ -1,7 +1,7 @@
-import { generateError } from '../../utils/errorHandler.js'
-import { generateSuccessResponse } from '../../utils/successHandler.js'
 import { createNewCustomer } from '../services/createNewCustomer.js'
 import { validateUserCredentials } from '../validations/userValidation.js'
+import { generateError } from '../../utils/errorHandler.js'
+import { generateSuccessResponse } from '../../utils/successHandler.js'
 
 export const newUser = async (req, res) => {
     try{
