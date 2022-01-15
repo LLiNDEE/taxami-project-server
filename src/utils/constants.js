@@ -64,6 +64,7 @@ const USER_CREATE_KEYS = {
     email: 'email',
     username: 'username',
     password: 'password',
+    code: 'code',
 }
 
 const CREATE_INVITE_KEYS = {
