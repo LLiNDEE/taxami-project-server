@@ -16,11 +16,12 @@ export const validateKeys = (data, keys) =>{
     let ERROR = false
     const invalid_params = []
 
-    Object.entries(totalKeys).forEach(([k, v]) => {
+    totalKeys.forEach(k => {
         if(data[k] === "" || !data[k] || data[k] == ""){
-            invalid_params.push(totalKeys[k])
+            invalid_params.push(k)
         }
     })
+
 
     if(invalid_params.length > 0){
         return {
