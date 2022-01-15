@@ -20,6 +20,8 @@ const USER_SCHEMA = new Schema({
 const TASK_SCHEMA = new Schema({
     _id: { type: String, default: () => uuidv4()},
     building_id: String,
+    title: String,
+    description: String,
     priority: String,
     status: { type: String, default: TASK_STATUS_TYPES.idle },
     created: { type: Date, default: Date.now() },
