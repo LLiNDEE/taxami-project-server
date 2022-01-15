@@ -1,7 +1,7 @@
 import mongoose from 'mongoose'
 import { v4 as uuidv4 } from 'uuid'
 
-import { TASK_STATUS_TYPES, ALLOWED_ROLES } from '../../utils/constants.js'
+import { TASK_STATUS_TYPES, ALLOWED_ROLES, TASK_PRIORITY_TYPES } from '../../utils/constants.js'
 
 const Schema = mongoose.Schema
 
@@ -25,11 +25,12 @@ const TASK_DETAILS_SCHEMA = new Schema({
 
 const TASK_SCHEMA = new Schema({
     _id: { type: String, default: () => uuidv4()},
+    user_id: { type: String, required: true },
     building_id: String,
     title: String,
     description: String,
     details: TASK_DETAILS_SCHEMA,
-    priority: String,
+    priority: { type: String, enum: TASK_PRIORITY_TYPES, default: TASK_PRIORITY_TYPES.low},
     status: { type: String, default: TASK_STATUS_TYPES.idle },
     created: { type: Date, default: Date.now() },
 })
@@ -54,5 +55,6 @@ const CODES_SCHEMA = new Schema({
 export const User = mongoose.model('users', USER_SCHEMA)
 export const Building = mongoose.model('buildings', BUILDING_SCHEMA)
 export const Code = mongoose.model('codes', CODES_SCHEMA)
+export const Task = mongoose.model('tasks', TASK_SCHEMA)
 
 export const Admin = mongoose.model('taxami-admin-users', USER_SCHEMA)
