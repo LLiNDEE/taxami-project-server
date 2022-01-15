@@ -40,12 +40,14 @@ export const ERROR_TYPES = {
     noPermission: 'noPermission',
     noCode: 'noCode',
     noUser: 'noUser',
+    noCustomers: 'noCustomers',
     alreadyMember: 'alreadyMember',
     codeError: 'codeError',
     error: 'error',
 }
 
 export const ROUTES = {
+    admin_get_customers: '/admin/get/customers',
     admin_generate_code: '/admin/generate/code', 
     user_create: '/user/create',
     user_login: '/user/login',
@@ -91,6 +93,10 @@ const ADMIN_GENERATE_CODE_KEYS = {
     type: 'type',
 }
 
+const ADMIN_GET_CUSTOMERS_KEYS = {
+    user_id: 'user_id',
+}
+
 export const PATH_KEYS = {
     [ROUTES.user_login]: LOGIN_KEYS,
     [ROUTES.user_create]: USER_CREATE_KEYS,
@@ -99,4 +105,5 @@ export const PATH_KEYS = {
     [ROUTES.user_building_invite]: USER_JOIN_INVITE,
     [ROUTES.check_code]: CHECK_CODE_KEYS,
     [ROUTES.admin_generate_code]: ADMIN_GENERATE_CODE_KEYS,
+    [ROUTES.admin_get_customers]: ADMIN_GET_CUSTOMERS_KEYS,
 }
