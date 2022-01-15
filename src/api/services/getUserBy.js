@@ -1,4 +1,4 @@
-import { User } from './models.js'
+import { User } from '../models/models.js'
 
 export const getUserBy = async (key = 'username', data) => {
     try{

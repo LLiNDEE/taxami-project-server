@@ -1,5 +1,5 @@
 import { generateError } from "../../utils/errorHandler.js";
-import { getUserBy } from "../models/getUserBy.js";
+import { getUserBy } from "../services/getUserBy.js";
 
 export const validateUserUUID = async (req, res, next) => {
     try{

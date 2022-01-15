@@ -1,7 +1,7 @@
 import { generateError } from "../../utils/errorHandler.js";
-import { createNewBuilding } from "../models/createNewBuilding.js";
 import { generateSuccessResponse } from "../../utils/successHandler.js";
-import { addBuildingToUser } from "../models/addBuildingToUser.js";
+import { createNewBuilding } from "../services/createNewBuilding.js";
+import { addBuildingToUser } from "../services/addBuildingToUser.js";
 
 export const newBuilding = async (req, res) => {
     try{

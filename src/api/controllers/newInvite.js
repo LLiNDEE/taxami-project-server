@@ -1,6 +1,6 @@
 import { generateError } from "../../utils/errorHandler.js";
 import { generateSuccessResponse } from "../../utils/successHandler.js";
-import { createInvite } from "../models/createInvite.js";
+import { createInvite } from "../services/createInvite.js";
 
 export const newInvite = async (req, res) => {
     try{

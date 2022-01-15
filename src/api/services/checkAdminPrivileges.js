@@ -1,4 +1,4 @@
-import { Admin } from "./models.js"
+import { Admin } from '../models/models.js'
 
 
 export const checkAdminPrivileges = async user_id => {

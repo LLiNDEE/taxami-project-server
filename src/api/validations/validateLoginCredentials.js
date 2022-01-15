@@ -1,6 +1,6 @@
 import bcrypt from 'bcrypt'
 
-import { getUserBy } from "../models/getUserBy.js"
+import { getUserBy } from "../services/getUserBy.js"
 
 export const validateLoginCredentials = async data => {
     try{

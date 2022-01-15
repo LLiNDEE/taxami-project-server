@@ -1,6 +1,6 @@
 import { generateError } from "../../utils/errorHandler.js"
 import { generateSuccessResponse } from "../../utils/successHandler.js"
-import { checkAdminPrivileges } from "../models/checkAdminPrivileges.js"
+import { checkAdminPrivileges } from "../services/checkAdminPrivileges.js"
 
 
 

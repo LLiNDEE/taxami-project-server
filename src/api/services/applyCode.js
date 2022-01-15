@@ -1,4 +1,4 @@
-import { Code, User, Building } from "./models.js"
+import { Code, User, Building } from '../models/models.js'
 
 
 

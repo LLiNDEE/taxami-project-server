@@ -1,4 +1,4 @@
-import { Building } from "./models.js";
+import { Building } from '../models/models.js'
 
 export const createNewBuilding = async data => {
     try{

@@ -1,6 +1,6 @@
 import { generateError } from "../../utils/errorHandler.js"
 import { generateSuccessResponse } from "../../utils/successHandler.js"
-import { checkCode } from "../models/checkCode.js"
+import { checkCode } from "../services/checkCode.js"
 
 
 export const checkCodeController = async (req, res) => {

@@ -1,4 +1,4 @@
-import { Code, Building } from './models.js'
+import { Code, Building } from '../models/models.js'
 
 export const checkCode = async code => {
     try{

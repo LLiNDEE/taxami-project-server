@@ -1,6 +1,6 @@
 import { generateError } from "../../utils/errorHandler.js"
 import { generateSuccessResponse } from "../../utils/successHandler.js"
-import { applyCode } from "../models/applyCode.js"
+import { applyCode } from "../services/applyCode.js"
 
 
 export const userJoinBuilding = async (req, res) => {

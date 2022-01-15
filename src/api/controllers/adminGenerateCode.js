@@ -1,6 +1,6 @@
 import { generateError } from "../../utils/errorHandler.js"
 import { generateSuccessResponse } from "../../utils/successHandler.js"
-import { adminCreateCode } from "../models/adminCreateCode.js"
+import { adminCreateCode } from "../services/adminCreateCode.js"
 
 
 
