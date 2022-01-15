@@ -9,7 +9,7 @@ const USER_SCHEMA = new Schema({
     _id: { type: String, default: () => uuidv4()},
     username: { type: String, required: true },
     email: { type: String, required: true },
-    password: { type: String, required: true },
+    password: { type: String, select: false, required: true },
     buildings: [{ type: String, default: undefined }],
     tasks: [{ type: String, default: undefined }],
     completed_tasks: [{ type: String, default: undefined }],
@@ -17,11 +17,18 @@ const USER_SCHEMA = new Schema({
     created: { type: Date, default: Date.now() },
 })
 
+const TASK_DETAILS_SCHEMA = new Schema({
+    estimated_time: { type: String },
+    estimated_cost: { type: String }, 
+    optional_comment: { type: String }
+})
+
 const TASK_SCHEMA = new Schema({
     _id: { type: String, default: () => uuidv4()},
     building_id: String,
     title: String,
     description: String,
+    details: TASK_DETAILS_SCHEMA,
     priority: String,
     status: { type: String, default: TASK_STATUS_TYPES.idle },
     created: { type: Date, default: Date.now() },
