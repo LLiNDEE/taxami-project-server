@@ -17,7 +17,7 @@ export const ALLOWED_ROLES = ['customer', 'worker', 'admin']
 export const TASK_STATUS_TYPES = {
     idle: 'idle',
     inProgress: 'inProgress',
-    done: 'done',
+    completed: 'completed',
     canceled: 'canceled',
     private: 'private',
     public: 'public',
@@ -46,6 +46,7 @@ export const ERROR_TYPES = {
     noBuilding: 'noBuilding',
     noPermission: 'noPermission',
     noCode: 'noCode',
+    notAMember: 'notAMember',
     noUser: 'noUser',
     noCustomers: 'noCustomers',
     alreadyMember: 'alreadyMember',
@@ -59,6 +60,8 @@ export const ROUTES = {
     user_create: '/user/create',
     user_login: '/user/login',
     user_building_invite: '/user/join',
+    user_take_task: '/user/take/task',
+    user_complete_task: '/user/complete/task',
     check_code: '/user/check/code',
     building_create: '/building/create',
     building_add_task: '/building/add/task',
@@ -113,6 +116,19 @@ const ADMIN_GET_CUSTOMERS_KEYS = {
     user_id: 'user_id',
 }
 
+const USER_TAKE_TASK_KEYS = {
+    user_id: 'user_id',
+    building_id: 'building_id',
+    task_id: 'task_id',
+    estimated_time: 'estimated_time',
+    estimated_cost: 'estimated_cost',
+}
+
+const USER_COMPLETE_TASK_KEYS = {
+    user_id: 'user_id',
+    task_id: 'task_id'
+}
+
 export const PATH_KEYS = {
     [ROUTES.user_login]: LOGIN_KEYS,
     [ROUTES.user_create]: USER_CREATE_KEYS,
@@ -123,4 +139,6 @@ export const PATH_KEYS = {
     [ROUTES.check_code]: CHECK_CODE_KEYS,
     [ROUTES.admin_generate_code]: ADMIN_GENERATE_CODE_KEYS,
     [ROUTES.admin_get_customers]: ADMIN_GET_CUSTOMERS_KEYS,
+    [ROUTES.user_take_task]: USER_TAKE_TASK_KEYS,
+    [ROUTES.user_complete_task]: USER_COMPLETE_TASK_KEYS,
 }
