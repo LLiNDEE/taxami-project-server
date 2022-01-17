@@ -7,7 +7,7 @@ export const validateLoginCredentials = async data => {
 
         const { email, password } = data
 
-        const userResponse = await getUserBy('email', email)
+        const userResponse = await getUserBy('email', email, 'password')
         if(!userResponse.success || userResponse.type === 'noUser'){
             return {
                 type: 'invalidCredentials',
@@ -19,7 +19,6 @@ export const validateLoginCredentials = async data => {
 
         const isPasswordCorrect = await comparePassword(password, user.password)
         if(!isPasswordCorrect){
-            console.log("invalid password...")
             return {
                 type: 'invalidCredentials',
                 success: false,
