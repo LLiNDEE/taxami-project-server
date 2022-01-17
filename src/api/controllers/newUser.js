@@ -11,6 +11,7 @@ export const newUser = async (req, res) => {
         const validatedCredentials = await validateUserCredentials(DETAILS)
         if(!validatedCredentials.success) return res.status(400).send(generateError('invalidCredentials'))
 
+
         const createCustomerResponse = await createNewCustomer(validatedCredentials.data)
         if(!createCustomerResponse.success) return res.status(424).send(generateError(createCustomerResponse.type))
 
