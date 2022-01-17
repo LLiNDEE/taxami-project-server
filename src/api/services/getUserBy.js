@@ -1,6 +1,6 @@
 import { User } from '../models/models.js'
 
-export const getUserBy = async (key = 'username', data, config) => {
+export const getUserBy = async (key = 'username', data, config = "") => {
     try{
 
         if(config === 'password'){
