@@ -31,13 +31,17 @@ export const validateUserCredentials = async data => {
 
     }catch(error){
         console.log(error)
+        return {
+            type: 'failed',
+            success: false,
+        }
     }
 }
 
 const isUsernameValid = async username => {
     try{
-        const usernameOBJ = await getUserBy('username', username)
-        if(!usernameOBJ.success || usernameOBJ.type === 'userExist') return false
+        const usernameOBJ = await getUserBy('username', username, "")
+        if(usernameOBJ.success || usernameOBJ.type === 'userExist') return false
         return true
     }catch(error){
         return false
@@ -51,8 +55,8 @@ export const isEmailValid = async email => {
         if(!email.match(RegExpEmail)) return false
 
         const emailOBJ = await getUserBy('email', email)
-        if(!emailOBJ.success || emailOBJ.type === 'userExist') return false
-
+        if(emailOBJ.success || emailOBJ.type === 'userExist') return false
+        
         return true
 
     }catch(error){
