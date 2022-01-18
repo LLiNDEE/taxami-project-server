@@ -21,6 +21,8 @@ export const createNewCustomer = async ( data ) => {
                 username: data.username,
                 email: data.email,
                 password: data.password,
+                first_name: data.first_name,
+                last_name: data.last_name,
                 role: 'customer',
             })
     
@@ -37,6 +39,8 @@ export const createNewCustomer = async ( data ) => {
             const user = new User({
                 username: data.username,
                 email: data.email,
+                first_name: data.first_name,
+                last_name: data.last_name,
                 password: data.password
             })
 
