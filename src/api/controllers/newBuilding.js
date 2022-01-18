@@ -11,7 +11,7 @@ export const newBuilding = async (req, res) => {
         const { user_id } = req.body
 
         const userOBJ = await getUserBy('_id', user_id)
-        if(userOBJ.user[0].role !== 'customer') return res.status(200).send(generateError('noPermission'))
+        if(userOBJ.user[0].role !== 'customer') return res.status(401).send(generateError('noPermission'))
 
         const addBuildingResponse = await createNewBuilding(DETAILS)
         if(!addBuildingResponse.success) return res.status(400).send(generateError(addBuildingResponse.type))
