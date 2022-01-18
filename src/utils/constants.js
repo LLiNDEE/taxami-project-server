@@ -69,7 +69,8 @@ export const ROUTES = {
     user_leave_task: '/user/leave/task',
     check_code: '/user/check/code',
     building_create: '/building/create',
-    building_add_task: '/building/add/task',
+    building_task_create: '/building/add/task',
+    building_update_task: '/building/update/task',
     building_invite: '/building/generate/invite',
 }
 
@@ -82,6 +83,8 @@ const USER_CREATE_KEYS = {
     email: 'email',
     username: 'username',
     password: 'password',
+    first_name: 'first_name',
+    last_name: 'last_name',
     code: 'code',
 }
 
@@ -139,6 +142,11 @@ const USER_LEAVE_TASK_KEYS = {
     task_id: 'task_id',
 }
 
+const BUILDING_UPDATE_TASK = {
+    user_id: 'user_id',
+    task_id: 'task_id'
+}
+
 export const PATH_KEYS = {
     [ROUTES.user_login]: LOGIN_KEYS,
     [ROUTES.user_create]: USER_CREATE_KEYS,
@@ -152,4 +160,5 @@ export const PATH_KEYS = {
     [ROUTES.user_take_task]: USER_TAKE_TASK_KEYS,
     [ROUTES.user_complete_task]: USER_COMPLETE_TASK_KEYS,
     [ROUTES.user_leave_task]: USER_LEAVE_TASK_KEYS,
+    [ROUTES.building_update_task]: BUILDING_UPDATE_TASK,
 }
