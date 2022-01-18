@@ -13,9 +13,8 @@ export const newTask = async (req, res) => {
 
         const userOBJ = await getUserBy('_id', user_id)
         const userBuildings = userOBJ.user[0].buildings
-
         if(!userBuildings.includes(building_id)) return res.status(401).send(generateError('noPermission'))
-
+        
         const addTaskResponse = await addNewTask(DETAILS)
         if(!addTaskResponse.success) return res.status(424).send(generateError('failedToAddTask'))
 
