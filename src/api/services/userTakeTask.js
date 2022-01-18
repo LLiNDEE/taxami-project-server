@@ -6,6 +6,7 @@ export const userTakeTask = async data => {
     try{
 
         const { user_id, building_id, task_id } = data
+        const userQuery = {_id: user_id}
 
         const building = await Building.find({_id: building_id})
         if(!building) {
@@ -23,7 +24,32 @@ export const userTakeTask = async data => {
             }
         }
 
+        const user = await User.findOne(userQuery)
+
+        if(user.tasks.includes(task_id)){
+            return {
+                type: 'taskAlreadyAssigned',
+                success: false
+            }
+        }
+    
         const taskQuery = {_id: task_id}
+
+        const task = await Task.findOne(taskQuery)
+        if(task.status === 'completed') {
+            return {
+                type: 'taskAlreadyCompleted',
+                success: false,
+            }
+        }
+
+        if(task.status === 'inProgress'){
+            return {
+                type: 'taskAlreadyInProgress',
+                success: false
+            }
+        }
+
         await Task.findOneAndUpdate(taskQuery, {$set: {details: {
                 estimated_time: data.estimated_time,
                 estimated_cost: data.estimated_cost
@@ -31,7 +57,7 @@ export const userTakeTask = async data => {
             status: 'inProgress',
         }})
 
-        const userQuery = {_id: user_id}
+        
         await User.findOneAndUpdate(userQuery, {$push: {tasks: task_id}})
 
         return {

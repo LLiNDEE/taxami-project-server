@@ -41,6 +41,7 @@ export const ERROR_TYPES = {
     failedToApplyCode: 'failedToApplyCode',
     failedToAddBuilding: 'failedToAddBuilding',
     failedToAddTask: 'failedToAddTask',
+    failedToRemoveTask: 'failedToRemoveTask',
     failedToCreateInvite: 'failedToCreateInvite',
     failedToGenerateCode: 'failedToGenerateCode',
     noBuilding: 'noBuilding',
@@ -49,6 +50,9 @@ export const ERROR_TYPES = {
     notAMember: 'notAMember',
     noUser: 'noUser',
     noCustomers: 'noCustomers',
+    taskAlreadyCompleted: 'taskAlreadyCompleted',
+    taskAlreadyAssigned: 'taskAlreadyAssigned',
+    taskAlreadyInProgress: 'taskAlreadyInProgress',
     alreadyMember: 'alreadyMember',
     codeError: 'codeError',
     error: 'error',
@@ -62,6 +66,7 @@ export const ROUTES = {
     user_building_invite: '/user/join',
     user_take_task: '/user/take/task',
     user_complete_task: '/user/complete/task',
+    user_leave_task: '/user/leave/task',
     check_code: '/user/check/code',
     building_create: '/building/create',
     building_add_task: '/building/add/task',
@@ -129,6 +134,11 @@ const USER_COMPLETE_TASK_KEYS = {
     task_id: 'task_id'
 }
 
+const USER_LEAVE_TASK_KEYS = {
+    user_id: 'user_id',
+    task_id: 'task_id',
+}
+
 export const PATH_KEYS = {
     [ROUTES.user_login]: LOGIN_KEYS,
     [ROUTES.user_create]: USER_CREATE_KEYS,
@@ -141,4 +151,5 @@ export const PATH_KEYS = {
     [ROUTES.admin_get_customers]: ADMIN_GET_CUSTOMERS_KEYS,
     [ROUTES.user_take_task]: USER_TAKE_TASK_KEYS,
     [ROUTES.user_complete_task]: USER_COMPLETE_TASK_KEYS,
+    [ROUTES.user_leave_task]: USER_LEAVE_TASK_KEYS,
 }
