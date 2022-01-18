@@ -69,7 +69,7 @@ export const ROUTES = {
     user_leave_task: '/user/leave/task',
     check_code: '/user/check/code',
     building_create: '/building/create',
-    building_task_create: '/building/add/task',
+    building_add_task: '/building/add/task',
     building_update_task: '/building/update/task',
     building_invite: '/building/generate/invite',
 }
