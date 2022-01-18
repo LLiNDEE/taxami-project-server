@@ -17,7 +17,7 @@ export const updateTask = async (req, res) => {
 
         const validKeys = filterValidKeys(DATA, TASK_VALID_KEYS)
 
-        // if(validKeys.length === 0) return res.status(400).send(generateError('error'))
+        if(validKeys.length === 0) return res.status(400).send(generateError('error'))
 
         const formattedKeys = formatValidKeys(validKeys, DATA)
 
