@@ -18,7 +18,7 @@ export const userLogin = async (req, res) => {
 
         const userDATA = checkLoginCredentials.data
         
-        const tokenOBJ = generateToken(userDATA.user_id)
+        const tokenOBJ = generateToken({uuid: userDATA.user_id})
         if(!tokenOBJ.success) return res.status(400).send(generateError())
 
         userDATA.token = tokenOBJ.token
@@ -35,7 +35,7 @@ const generateToken = userData =>{
     try{
 
         const token = jwt.sign({
-            data: {
+            data:{
                 ...userData??null
             }
         }, JWT_SECRET, {expiresIn: '1h'})
