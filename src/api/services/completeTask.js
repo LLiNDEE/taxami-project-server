@@ -1,4 +1,4 @@
-import { Task } from "../models/models.js"
+import { Task, User } from "../models/models.js"
 import { getUserBy } from "./getUserBy.js"
 
 
@@ -25,7 +25,20 @@ export const completeTask = async data => {
         }
 
         const taskQuery = {_id: task_id}
+
+        const task = await Task.findOne({taskQuery})
+        if(task.status === 'completed'){
+            return {
+                type: 'taskAlreadyCompleted',
+                success: false
+            }
+        }
+
         await Task.findOneAndUpdate(taskQuery, {$set: {status: 'completed'}})
+
+        const userQuery = {_id: user_id}
+        await User.findOneAndUpdate(userQuery, {$pull: {tasks: task_id}})
+        await User.findOneAndUpdate(userQuery, {$push: {completed_tasks: task_id}})
 
         return {
             type: 'success',
