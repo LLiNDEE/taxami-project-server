@@ -8,6 +8,8 @@ const Schema = mongoose.Schema
 const USER_SCHEMA = new Schema({
     _id: { type: String, default: () => uuidv4()},
     username: { type: String, required: true },
+    first_name: { type: String, required: true },
+    last_name: { type: String, required: true },
     email: { type: String, required: true },
     password: { type: String, select: false, required: true },
     buildings: [{ type: String, default: undefined }],
@@ -17,11 +19,11 @@ const USER_SCHEMA = new Schema({
     created: { type: Date, default: Date.now() },
 })
 
-const TASK_DETAILS_SCHEMA = new Schema({
+const TASK_DETAILS_SCHEMA = {
     estimated_time: { type: String },
     estimated_cost: { type: String }, 
     optional_comment: { type: String }
-})
+}
 
 const TASK_SCHEMA = new Schema({
     _id: { type: String, default: () => uuidv4()},
