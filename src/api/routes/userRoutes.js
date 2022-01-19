@@ -3,6 +3,7 @@ import { newUser } from "../controllers/newUser.js"
 import { userLogin } from "../controllers/userLogin.js"
 import { checkCodeController } from "../controllers/checkCodeController.js"
 import { adminGenerateCode } from "../controllers/adminGenerateCode.js"
+import { getUserBuildings } from "../controllers/getUserBuildings.js"
 import { userLeaveTask } from "../controllers/userLeaveTask.js"
 import { userTakeTaskController as userTakeTask } from '../controllers/userTakeTaskController.js'
 import { userCompleteTaskController as userCompleteTask } from "../controllers/userCompleteTaskController.js"
@@ -24,6 +25,8 @@ const userRoutes = app =>{
     app.post(ROUTES.user_login, checkKeys, userLogin)
     app.post(ROUTES.user_building_invite, checkKeys, validateUserUUID, userJoinBuilding)
     app.post(ROUTES.check_code, checkKeys, checkCodeController)
+    
+    app.post(ROUTES.user_get_buildings, checkKeys, validateUserUUID, getUserBuildings)
 
     app.post([ROUTES.user_take_task], checkKeys, validateUserUUID, userTakeTask)
     app.post([ROUTES.user_complete_task], checkKeys, validateUserUUID, userCompleteTask)

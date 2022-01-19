@@ -64,6 +64,7 @@ export const ROUTES = {
     admin_get_customers: '/admin/get/customers',
     admin_generate_code: '/admin/generate/code', 
     user_create: '/user/create',
+    user_get_buildings: '/user/get/buildings',
     user_login: '/user/login',
     user_building_invite: '/user/join',
     user_take_task: '/user/take/task',
@@ -156,6 +157,10 @@ const BUILDING_REMOVE_MEMBER_KEYS = {
     member_id: 'member_id',
 }
 
+const USER_GET_BUILDINGS_KEYS = {
+    user_id: 'user_id'
+}
+
 export const PATH_KEYS = {
     [ROUTES.user_login]: LOGIN_KEYS,
     [ROUTES.user_create]: USER_CREATE_KEYS,
@@ -171,4 +176,5 @@ export const PATH_KEYS = {
     [ROUTES.user_leave_task]: USER_LEAVE_TASK_KEYS,
     [ROUTES.building_update_task]: BUILDING_UPDATE_TASK_KEYS,
     [ROUTES.building_remove_member]: BUILDING_REMOVE_MEMBER_KEYS,
+    [ROUTES.user_get_buildings]: USER_GET_BUILDINGS_KEYS,
 }
