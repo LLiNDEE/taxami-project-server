@@ -44,10 +44,12 @@ export const ERROR_TYPES = {
     failedToRemoveTask: 'failedToRemoveTask',
     failedToCreateInvite: 'failedToCreateInvite',
     failedToGenerateCode: 'failedToGenerateCode',
+    failedToRemoveMember: 'failedToRemoveMember',
     noBuilding: 'noBuilding',
     noPermission: 'noPermission',
     noCode: 'noCode',
     notAMember: 'notAMember',
+    memberRemoved: 'memberRemoved',
     noUser: 'noUser',
     noCustomers: 'noCustomers',
     taskAlreadyCompleted: 'taskAlreadyCompleted',
@@ -72,6 +74,7 @@ export const ROUTES = {
     building_add_task: '/building/add/task',
     building_update_task: '/building/update/task',
     building_invite: '/building/generate/invite',
+    building_remove_member: '/building/remove/member',
 }
 
 const LOGIN_KEYS = {
@@ -142,9 +145,15 @@ const USER_LEAVE_TASK_KEYS = {
     task_id: 'task_id',
 }
 
-const BUILDING_UPDATE_TASK = {
+const BUILDING_UPDATE_TASK_KEYS = {
     user_id: 'user_id',
     task_id: 'task_id'
+}
+
+const BUILDING_REMOVE_MEMBER_KEYS = {
+    user_id: 'user_id',
+    building_id: 'building_id',
+    member_id: 'member_id',
 }
 
 export const PATH_KEYS = {
@@ -160,5 +169,6 @@ export const PATH_KEYS = {
     [ROUTES.user_take_task]: USER_TAKE_TASK_KEYS,
     [ROUTES.user_complete_task]: USER_COMPLETE_TASK_KEYS,
     [ROUTES.user_leave_task]: USER_LEAVE_TASK_KEYS,
-    [ROUTES.building_update_task]: BUILDING_UPDATE_TASK,
+    [ROUTES.building_update_task]: BUILDING_UPDATE_TASK_KEYS,
+    [ROUTES.building_remove_member]: BUILDING_REMOVE_MEMBER_KEYS,
 }
