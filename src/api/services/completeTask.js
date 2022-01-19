@@ -8,6 +8,8 @@ export const completeTask = async data => {
 
         const { task_id, user_id } = data
 
+        const taskQuery = {_id: task_id}
+
         const userOBJ = await getUserBy('_id', user_id)
         if(!userOBJ.success || userOBJ.type === 'noUser'){
             return {
@@ -16,17 +18,16 @@ export const completeTask = async data => {
             }
         }
 
+        const task = await Task.findOne(taskQuery)
+
         const userTasks = userOBJ.user[0].tasks
-        if(!userTasks.includes(task_id)) {
+        if(!userTasks.includes(task_id) || user_id !== task.user_id) {
             return {
                 type: 'noPermission',
                 success: false
             }
         }
 
-        const taskQuery = {_id: task_id}
-
-        const task = await Task.findOne({taskQuery})
         if(task.status === 'completed'){
             return {
                 type: 'taskAlreadyCompleted',
@@ -35,6 +36,13 @@ export const completeTask = async data => {
         }
 
         await Task.findOneAndUpdate(taskQuery, {$set: {status: 'completed'}})
+
+        if(user_id === task.user_id){
+            return {
+                type: 'success',
+                success: true,
+            }
+        }
 
         const userQuery = {_id: user_id}
         await User.findOneAndUpdate(userQuery, {$pull: {tasks: task_id}})
