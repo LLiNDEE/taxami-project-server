@@ -15,14 +15,6 @@ export const updateTaskData = async (user_id, task_id, values) => {
             }
         }
 
-        // const userTasks = userOBJ.user[0].tasks
-        // if(!userTasks.includes(task_id)) {
-        //     return {
-        //         type: 'noPermission',
-        //         success: false
-        //     }
-        // }
-
         const taskQuery = {_id: task_id}
 
         const task = await Task.findOne(taskQuery)
