@@ -2,8 +2,28 @@ import { Task, User } from '../models/models.js'
 
 
 
-export const removeTaskFromUser = async data => {
+export const removeTaskFromUser = async (data, multiple = false) => {
     try{
+
+
+        if(multiple) {
+            const { user_id, values } = data
+            
+            const userQuery = {_id: user_id}
+            const updateQuery = {_id: {$in: values}}
+
+            const user = await User.findOne(userQuery)
+            const updatedTasksArray = user.tasks.filter(t => !values.includes(t))
+            
+            await User.findOneAndUpdate(userQuery, {$set: {tasks: updatedTasksArray}})
+
+            await Task.updateMany(updateQuery, { $set: { details: { estimated_time: "", estimated_cost: ""}}, status: 'idle'})
+
+            return {
+                type: 'success',
+                success: true
+            }
+        }
 
         const { user_id, task_id } = data
 
