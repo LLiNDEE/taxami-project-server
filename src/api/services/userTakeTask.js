@@ -52,7 +52,8 @@ export const userTakeTask = async data => {
 
         await Task.findOneAndUpdate(taskQuery, {$set: {details: {
                 estimated_time: data.estimated_time,
-                estimated_cost: data.estimated_cost
+                estimated_cost: data.estimated_cost,
+                optional_comment: data?.optional_comment ?? ""
             },
             status: 'inProgress',
         }})
