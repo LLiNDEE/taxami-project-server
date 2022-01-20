@@ -35,6 +35,7 @@ export const ERROR_TYPES = {
     invalidCredentials: 'invalidCredentials',
     invalidOrMissingParam: 'invalidOrMissingParam',
     missingParams: 'missing_params',
+    authorizationError: 'authorizationError',
     failedToCreate: 'failedToCreate',
     failedToLogin: 'failedToLogin',
     failedToApplyInvite: 'failedToApplyInvite',
