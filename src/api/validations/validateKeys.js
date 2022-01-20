@@ -17,7 +17,7 @@ export const validateKeys = (data, keys) =>{
     const invalid_params = []
 
     totalKeys.forEach(k => {
-        if(data[k] === "" || !data[k] || data[k] == ""){
+        if(data[k].trim() === "" || !data[k] || data[k].trim() == ""){
             invalid_params.push(k)
         }
     })
