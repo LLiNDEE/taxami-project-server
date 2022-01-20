@@ -44,6 +44,7 @@ export const ERROR_TYPES = {
     failedToAddTask: 'failedToAddTask',
     failedToRemoveTask: 'failedToRemoveTask',
     failedToCreateInvite: 'failedToCreateInvite',
+    failedToDeleteBuilding: 'failedToDeleteBuilding',
     failedToGenerateCode: 'failedToGenerateCode',
     failedToRemoveMember: 'failedToRemoveMember',
     noBuilding: 'noBuilding',
@@ -73,6 +74,7 @@ export const ROUTES = {
     user_leave_task: '/user/leave/task',
     check_code: '/user/check/code',
     building_create: '/building/create',
+    building_delete: '/building/delete',
     building_add_task: '/building/add/task',
     building_update_task: '/building/update/task',
     building_invite: '/building/generate/invite',
@@ -101,6 +103,11 @@ const CREATE_INVITE_KEYS = {
 const CREATE_BUILDING_KEYS = {
     user_id: 'user_id',
     building_name: 'building_name',
+}
+
+const DELETE_BUILDING_KEYS = {
+    user_id: 'user_id',
+    building_id: 'building_id',
 }
 
 const BUILDING_ADD_TASK_KEYS = {
@@ -178,4 +185,5 @@ export const PATH_KEYS = {
     [ROUTES.building_update_task]: BUILDING_UPDATE_TASK_KEYS,
     [ROUTES.building_remove_member]: BUILDING_REMOVE_MEMBER_KEYS,
     [ROUTES.user_get_buildings]: USER_GET_BUILDINGS_KEYS,
+    [ROUTES.building_delete]: DELETE_BUILDING_KEYS,
 }
