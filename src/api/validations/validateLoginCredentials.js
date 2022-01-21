@@ -1,6 +1,7 @@
 import bcrypt from 'bcrypt'
 
 import { getUserBy } from "../services/getUserBy.js"
+import { getUserBuildings } from '../services/getUserBuildings.js'
 
 export const validateLoginCredentials = async data => {
     try{
@@ -25,15 +26,24 @@ export const validateLoginCredentials = async data => {
             }
         }
 
+        const userMemberOfBuildings = await getUserBuildings(user._id)
+        if(!userMemberOfBuildings.success) {
+            return {
+                type: 'failed',
+                success: false
+            }
+        }
+
         return {
             type: 'success',
             success: true,
             data: {
                 user_id: user._id,
-                email: user.email,
-                buildings: user.buildings,
-                tasks: user.tasks,
-                completed_tasks: user.completed_tasks
+                email: user?.email,
+                buildings: user?.buildings,
+                tasks: user?.tasks,
+                completed_tasks: user?.completed_tasks,
+                memberOf: userMemberOfBuildings?.buildings
             }
         }
 

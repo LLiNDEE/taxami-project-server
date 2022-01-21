@@ -25,9 +25,9 @@ export const userLogin = async (req, res) => {
 
         res.status(200).send(generateSuccessResponse(userDATA, {message: "Successfully logged in"}))
 
-
     }catch(error){
         console.log(error)
+        res.status(400).send(generateError('error'))
     }
 }
 
