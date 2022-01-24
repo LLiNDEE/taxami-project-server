@@ -7,6 +7,7 @@ import { deleteBuilding } from '../controllers/deleteBuilding.js'
 import { validateUserUUID } from "../middlewares/validateUserUUID.js"
 import { checkKeys } from "../middlewares/checkKeys.js"
 import { ROUTES } from "../../utils/constants.js"
+import { removeTask } from "../controllers/removeTask.js"
 
 
 const buildingRoutes = app =>{
@@ -18,6 +19,7 @@ const buildingRoutes = app =>{
 
     app.post(ROUTES.building_remove_member, checkKeys, validateUserUUID, removeMember)
     app.post(ROUTES.building_delete, checkKeys, validateUserUUID, deleteBuilding)
+    app.post(ROUTES.building_remove_task, checkKeys, validateUserUUID, removeTask)
 
 
 }
