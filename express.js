@@ -1,5 +1,6 @@
 import express from 'express'
 import mongoose from 'mongoose'
+import cors from 'cors'
 
 import routes from './routes.js'
 import { MONGOOSE_CONNECTION_KEY } from './src/utils/constants.js'
@@ -24,6 +25,7 @@ const run = async () => {
 
         app.use(express.urlencoded({ extended: true }))
         app.use(express.json())
+        app.use(cors())
 
         app.listen(PORT)
 
