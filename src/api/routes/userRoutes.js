@@ -12,6 +12,7 @@ import { validateUserUUID } from "../middlewares/validateUserUUID.js"
 import { checkKeys } from "../middlewares/checkKeys.js"
 import { checkAdmin } from "../middlewares/checkAdmin.js"
 import { ROUTES } from "../../utils/constants.js"
+import { userGetTasks } from "../controllers/userGetTasks.js"
 
 
 
@@ -31,6 +32,7 @@ const userRoutes = app =>{
     app.post([ROUTES.user_take_task], checkKeys, validateUserUUID, userTakeTask)
     app.post([ROUTES.user_complete_task], checkKeys, validateUserUUID, userCompleteTask)
     app.post([ROUTES.user_leave_task], checkKeys, validateUserUUID, userLeaveTask)
+    app.post(ROUTES.user_get_tasks, checkKeys, validateUserUUID, userGetTasks)
 
     app.post([ROUTES.admin_generate_code], checkKeys, checkAdmin, adminGenerateCode)
     app.post([ROUTES.admin_get_customers], checkKeys, checkAdmin, getAllCustomers)
