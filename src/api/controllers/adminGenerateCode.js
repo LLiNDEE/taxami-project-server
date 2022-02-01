@@ -7,14 +7,12 @@ import { adminCreateCode } from "../services/adminCreateCode.js"
 export const adminGenerateCode = async (req, res) => {
     try{
 
-        const { user_id, type } = req.body
-
         if(req.body?.building_id && type === 'invite'){
-            const createCodeResponse = await adminCreateCode(user_id, type, req.body.building_id)
+            const createCodeResponse = await adminCreateCode(req.body)
             if(!createCodeResponse.success) return res.status(400).send(generateError('failed'))
             res.status(200).send(generateSuccessResponse({code: createCodeResponse.code}))
         }else{
-            const createCodeResponse = await adminCreateCode(user_id, type)
+            const createCodeResponse = await adminCreateCode(req.body)
             if(!createCodeResponse.success) return res.status(400).send(generateError('failed'))
             res.status(200).send(generateSuccessResponse({code: createCodeResponse.code}))
         }
