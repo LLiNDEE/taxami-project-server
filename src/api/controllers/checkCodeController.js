@@ -11,7 +11,7 @@ export const checkCodeController = async (req, res) => {
         const codeInformationResponse = await checkCode(code)
         if(!codeInformationResponse.success) return res.status(400).send(generateError('codeError'))
 
-        res.status(200).send(generateSuccessResponse(codeInformationResponse.data))
+        res.status(200).send(generateSuccessResponse({codeInformation: [codeInformationResponse.data], code: code}))
         
     }catch(error){
         console.log(error)
