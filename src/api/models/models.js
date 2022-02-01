@@ -17,6 +17,7 @@ const USER_SCHEMA = new Schema({
     completed_tasks: [{ type: String, default: undefined }],
     role: { type: String, enum: ALLOWED_ROLES, default: 'worker' },
     created: { type: Date, default: Date.now() },
+    code_used: { type: String, required: true }, 
 })
 
 const TASK_DETAILS_SCHEMA = {

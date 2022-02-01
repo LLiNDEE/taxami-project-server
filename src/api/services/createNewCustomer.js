@@ -24,6 +24,7 @@ export const createNewCustomer = async ( data ) => {
                 first_name: data.first_name,
                 last_name: data.last_name,
                 role: 'customer',
+                code_used: data.code
             })
     
             await user.save()
