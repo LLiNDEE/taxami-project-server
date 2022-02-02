@@ -1,4 +1,4 @@
-import { User } from '../models/models.js'
+import { User, Code } from '../models/models.js'
 import { applyCode } from './applyCode.js'
 import { checkCode } from './checkCode.js'
 
@@ -28,6 +28,9 @@ export const createNewCustomer = async ( data ) => {
             })
     
             await user.save()
+
+            const codeQuery = {_id: data.code}
+            await Code.findOneAndDelete(codeQuery)
 
             return {
                 type: 'success',
