@@ -39,10 +39,10 @@ export const validateLoginCredentials = async data => {
             success: true,
             data: {
                 user_id: user._id,
-                email: user?.email,
-                buildings: user?.buildings,
-                tasks: user?.tasks,
-                completed_tasks: user?.completed_tasks,
+                email: user.email,
+                buildings: user.buildings,
+                tasks: user.tasks,
+                completed_tasks: user.completed_tasks,
                 memberOf: userMemberOfBuildings?.buildings
             }
         }
