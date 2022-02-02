@@ -24,8 +24,6 @@ export const adminCreateCode = async ({user_id, type, building_id, prefix}) => {
 
         if(type === 'subscription'){
 
-            console.log("prefix", prefix)
-
             const code = new Code({
                 user_id: user_id,
                 type: 'subscription',
