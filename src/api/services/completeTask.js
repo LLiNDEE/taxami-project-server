@@ -21,8 +21,9 @@ export const completeTask = async data => {
         const task = await Task.findOne(taskQuery)
 
         const userTasks = userOBJ.user[0].tasks
+        const userCompletedTasks = userOBJ.user[0].completed_tasks
 
-        if(!userTasks.includes(task_id) && user_id !== task.user_id) {
+        if(!userTasks.includes(task_id) && !userCompletedTasks.includes(task_id) && user_id !== task.user_id) {
             return {
                 type: 'noPermission',
                 success: false
