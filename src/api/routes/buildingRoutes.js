@@ -9,7 +9,7 @@ import { checkKeys } from "../middlewares/checkKeys.js"
 import { ROUTES } from "../../utils/constants.js"
 import { removeTask } from "../controllers/removeTask.js"
 import { buildingGetTasks } from "../controllers/buildingGetTasks.js"
-
+import { getMembers } from "../controllers/getMembers.js"
 
 const buildingRoutes = app =>{
 
@@ -19,6 +19,7 @@ const buildingRoutes = app =>{
     app.post(ROUTES.building_update_task, checkKeys, validateUserUUID, updateTask)
 
     app.post(ROUTES.building_get_tasks, checkKeys, validateUserUUID, buildingGetTasks)
+    app.post(ROUTES.building_get_members, checkKeys, validateUserUUID, getMembers)
 
     app.post(ROUTES.building_remove_member, checkKeys, validateUserUUID, removeMember)
     app.post(ROUTES.building_delete, checkKeys, validateUserUUID, deleteBuilding)

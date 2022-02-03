@@ -81,7 +81,8 @@ export const ROUTES = {
     building_invite: '/building/generate/invite',
     building_remove_member: '/building/remove/member',
     building_remove_task: '/building/remove/task',
-    building_get_tasks: '/building/get/tasks'
+    building_get_tasks: '/building/get/tasks',
+    building_get_members: '/building/get/members',
 }
 
 const LOGIN_KEYS = {
@@ -187,6 +188,11 @@ const BUILDING_GET_TASKS_KEYS = {
     building_id: 'building_id',
 }
 
+const BUILDING_GET_MEMBERS_KEYS = {
+    user_id: 'user_id',
+    building_id: 'building_id',
+}
+
 
 export const PATH_KEYS = {
     [ROUTES.user_login]: LOGIN_KEYS,
@@ -208,4 +214,5 @@ export const PATH_KEYS = {
     [ROUTES.building_remove_task]: BUILDING_REMOVE_TASK_KEYS,
     [ROUTES.user_get_tasks]: USER_GET_TASKS_KEYS,
     [ROUTES.building_get_tasks]: BUILDING_GET_TASKS_KEYS,
+    [ROUTES.building_get_members]: BUILDING_GET_MEMBERS_KEYS,
 }
