@@ -26,8 +26,11 @@ export const validateLoginCredentials = async data => {
             }
         }
 
+        const userOBJ = await getUserBy('email', email)
+        const userData = userOBJ.user[0]
+
         const userMemberOfBuildings = await getUserBuildings(user._id)
-        if(!userMemberOfBuildings.success) {
+        if(!userMemberOfBuildings.success && userData.role !== 'customer') {
             return {
                 type: 'failed',
                 success: false
@@ -39,10 +42,10 @@ export const validateLoginCredentials = async data => {
             success: true,
             data: {
                 user_id: user._id,
-                email: user.email,
-                buildings: user.buildings,
-                tasks: user.tasks,
-                completed_tasks: user.completed_tasks,
+                email: userData.email,
+                buildings: userData.buildings,
+                tasks: userData.tasks,
+                completed_tasks: userData.completed_tasks,
                 memberOf: userMemberOfBuildings?.buildings
             }
         }
