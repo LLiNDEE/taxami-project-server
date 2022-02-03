@@ -50,6 +50,8 @@ export const userTakeTask = async data => {
             }
         }
 
+        await Task.findOneAndUpdate(taskQuery, {$set: {assigned_to: user_id}})
+
         await Task.findOneAndUpdate(taskQuery, {$set: {details: {
                 estimated_time: data.estimated_time,
                 estimated_cost: data.estimated_cost,
