@@ -19,6 +19,14 @@ export const removeTaskService = async data => {
         const buildingQuery = {_id: building_id}
         await Building.findOneAndUpdate(buildingQuery, {$pull: {tasks: task_id}})
 
+        if(task.status === 'idle'){
+            await Task.findOneAndRemove(taskQuery)
+            return {
+                type: 'success',
+                success: true
+            }
+        }
+
         const userQuery = {tasks: task_id}
         const user = await User.findOne(userQuery)
         if(!user){
