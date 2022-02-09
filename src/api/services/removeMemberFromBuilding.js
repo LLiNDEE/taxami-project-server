@@ -11,7 +11,7 @@ export const removeMemberFromBuilding = async data => {
         const buildingQuery = {_id: building_id}
         const building = await Building.findOne(buildingQuery)
 
-        if(building.user_id !== user_id){
+        if(building.user_id !== user_id && !building.members.includes(user_id)){
             return {
                 type: 'noPermission',
                 success: false,
