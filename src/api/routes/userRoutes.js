@@ -22,20 +22,20 @@ const userRoutes = app =>{
         res.send("/ route")
     })
 
-    app.post(ROUTES.user_create, checkKeys, newUser)
-    app.post(ROUTES.user_login, checkKeys, userLogin)
-    app.post(ROUTES.user_building_invite, checkKeys, validateUserUUID, userJoinBuilding)
-    app.post(ROUTES.check_code, checkKeys, checkCodeController)
+    app.post(ROUTES.user_create, newUser)
+    app.post(ROUTES.user_login, userLogin)
+    app.post(ROUTES.user_building_invite, validateUserUUID, userJoinBuilding)
+    app.post(ROUTES.check_code, checkCodeController)
     
-    app.post(ROUTES.user_get_buildings, checkKeys, validateUserUUID, getUserBuildings)
+    app.post(ROUTES.user_get_buildings, validateUserUUID, getUserBuildings)
 
-    app.post([ROUTES.user_take_task], checkKeys, validateUserUUID, userTakeTask)
-    app.post([ROUTES.user_complete_task], checkKeys, validateUserUUID, userCompleteTask)
-    app.post([ROUTES.user_leave_task], checkKeys, validateUserUUID, userLeaveTask)
-    app.post(ROUTES.user_get_tasks, checkKeys, validateUserUUID, userGetTasks)
+    app.post([ROUTES.user_take_task], validateUserUUID, userTakeTask)
+    app.post([ROUTES.user_complete_task], validateUserUUID, userCompleteTask)
+    app.post([ROUTES.user_leave_task], validateUserUUID, userLeaveTask)
+    app.post(ROUTES.user_get_tasks, validateUserUUID, userGetTasks)
 
-    app.post([ROUTES.admin_generate_code], checkKeys, checkAdmin, adminGenerateCode)
-    app.post([ROUTES.admin_get_customers], checkKeys, checkAdmin, getAllCustomers)
+    app.post([ROUTES.admin_generate_code],checkAdmin, adminGenerateCode)
+    app.post([ROUTES.admin_get_customers], checkAdmin, getAllCustomers)
 
 }
 

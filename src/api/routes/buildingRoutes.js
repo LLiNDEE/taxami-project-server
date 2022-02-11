@@ -13,17 +13,17 @@ import { getMembers } from "../controllers/getMembers.js"
 
 const buildingRoutes = app =>{
 
-    app.post(ROUTES.building_create, checkKeys, validateUserUUID, newBuilding)
-    app.post(ROUTES.building_invite, checkKeys, validateUserUUID, newInvite)
-    app.post(ROUTES.building_add_task, checkKeys, validateUserUUID, newTask)
-    app.post(ROUTES.building_update_task, checkKeys, validateUserUUID, updateTask)
+    app.post(ROUTES.building_create, validateUserUUID, newBuilding)
+    app.post(ROUTES.building_invite, validateUserUUID, newInvite)
+    app.post(ROUTES.building_add_task, validateUserUUID, newTask)
+    app.post(ROUTES.building_update_task, validateUserUUID, updateTask)
 
-    app.post(ROUTES.building_get_tasks, checkKeys, validateUserUUID, buildingGetTasks)
-    app.post(ROUTES.building_get_members, checkKeys, validateUserUUID, getMembers)
+    app.post(ROUTES.building_get_tasks, validateUserUUID, buildingGetTasks)
+    app.post(ROUTES.building_get_members, validateUserUUID, getMembers)
 
-    app.post(ROUTES.building_remove_member, checkKeys, validateUserUUID, removeMember)
-    app.post(ROUTES.building_delete, checkKeys, validateUserUUID, deleteBuilding)
-    app.post(ROUTES.building_remove_task, checkKeys, validateUserUUID, removeTask)
+    app.post(ROUTES.building_remove_member, validateUserUUID, removeMember)
+    app.post(ROUTES.building_delete, validateUserUUID, deleteBuilding)
+    app.post(ROUTES.building_remove_task, validateUserUUID, removeTask)
 
 
 }
