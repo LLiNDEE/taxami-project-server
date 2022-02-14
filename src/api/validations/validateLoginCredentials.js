@@ -46,7 +46,8 @@ export const validateLoginCredentials = async data => {
                 buildings: userData.buildings,
                 tasks: userData.tasks,
                 completed_tasks: userData.completed_tasks,
-                memberOf: userMemberOfBuildings?.buildings
+                memberOf: userMemberOfBuildings?.buildings,
+                role: userData.role,
             }
         }
 
