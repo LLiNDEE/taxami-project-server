@@ -29,9 +29,9 @@ export const deleteBuildingService = async data => {
         console.log(tasks)
 
         const taskQuery = {building_id: building_id}
-        // await  Task.deleteMany(taskQuery)
+        // await Task.findByIdAndDelete(taskQuery)
 
-        const userQuery = {tasks: {$in: tasks}}
+        // const userQuery = {tasks: {$in: tasks}}
         // await User.updateMany(userQuery, {$pull: {tasks: tasks }})
 
         // await Building.deleteOne(buildingQuery)
