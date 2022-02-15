@@ -8,6 +8,8 @@ import { userLeaveTask } from "../controllers/userLeaveTask.js"
 import { userTakeTaskController as userTakeTask } from '../controllers/userTakeTaskController.js'
 import { userCompleteTaskController as userCompleteTask } from "../controllers/userCompleteTaskController.js"
 import { getAllCustomersController as getAllCustomers } from "../controllers/getAllCustomersController.js"
+import { adminGetStats } from "../controllers/adminGetStats.js"
+import { userGetRole } from "../controllers/userGetRole.js"
 import { validateUserUUID } from "../middlewares/validateUserUUID.js"
 import { checkKeys } from "../middlewares/checkKeys.js"
 import { checkAdmin } from "../middlewares/checkAdmin.js"
@@ -34,8 +36,11 @@ const userRoutes = app =>{
     app.post([ROUTES.user_leave_task], validateUserUUID, userLeaveTask)
     app.post(ROUTES.user_get_tasks, validateUserUUID, userGetTasks)
 
+    app.post('/user/get/role', userGetRole)
+
     app.post([ROUTES.admin_generate_code],checkAdmin, adminGenerateCode)
     app.post([ROUTES.admin_get_customers], checkAdmin, getAllCustomers)
+    app.post('/admin/get/stats', checkAdmin, adminGetStats)
 
 }
 
