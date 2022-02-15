@@ -17,8 +17,8 @@ export const userLogin = async (req, res) => {
         if(!checkLoginCredentials.success) return res.status(401).send(generateError('invalidCredentials'))
 
         const userDATA = checkLoginCredentials.data
-        
-        const tokenOBJ = generateToken({uuid: userDATA.user_id})
+
+        const tokenOBJ = generateToken({uuid: userDATA.user_id, role: userDATA.role})
         if(!tokenOBJ.success) return res.status(400).send(generateError())
 
         userDATA.token = tokenOBJ.token
