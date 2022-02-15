@@ -147,5 +147,16 @@ export default function RouteSchemas (Validator){
 
     Connect('/building/get/members', BuildingGetMembersSchema)
 
+    const getUserRoleSchema = new Schema.Create({
+        user_id: Schema.isString().min(30).exec()
+    })
+
+    Connect('/user/get/role', getUserRoleSchema)
+
+    const adminGetStatsSchema = new Schema.Create({
+        user_id: Schema.isString().min(30).exec()
+    })
+
+    Connect('/admin/get/stats', adminGetStatsSchema)
 
 }
