@@ -18,9 +18,17 @@ export const TASK_STATUS_TYPES = {
     idle: 'idle',
     inProgress: 'inProgress',
     completed: 'completed',
-    canceled: 'canceled',
-    private: 'private',
-    public: 'public',
+    locked: 'locked'
+}
+
+export const BUILDING_STATUS_TYPES = {
+    active: 'active',
+    locked: 'locked',
+}
+
+export const USER_STATUS_TYPES = {
+    active: 'active',
+    locked: 'locked'
 }
 
 export const TASK_PRIORITY_TYPES = {

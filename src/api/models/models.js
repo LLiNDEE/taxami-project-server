@@ -1,7 +1,7 @@
 import mongoose from 'mongoose'
 import { v4 as uuidv4 } from 'uuid'
 
-import { TASK_STATUS_TYPES, ALLOWED_ROLES, TASK_PRIORITY_TYPES } from '../../utils/constants.js'
+import { TASK_STATUS_TYPES, ALLOWED_ROLES, TASK_PRIORITY_TYPES, BUILDING_STATUS_TYPES, USER_STATUS_TYPES } from '../../utils/constants.js'
 
 const Schema = mongoose.Schema
 
@@ -16,6 +16,7 @@ const USER_SCHEMA = new Schema({
     tasks: [{ type: String, default: undefined }],
     completed_tasks: [{ type: String, default: undefined }],
     role: { type: String, enum: ALLOWED_ROLES, default: 'worker' },
+    status: { type: String, enum: USER_STATUS_TYPES, default: USER_STATUS_TYPES.active },
     created: { type: Date, default: Date.now() },
     code_used: { type: String, required: true }, 
 })
@@ -45,6 +46,7 @@ const BUILDING_SCHEMA = new Schema({
     building_name: String,
     tasks: [{ type: String, default: undefined }],
     members: [{ type: String, default: undefined }],
+    status: { type: String, enum: BUILDING_STATUS_TYPES, default: BUILDING_STATUS_TYPES.active },
     created: { type: Date, default: Date.now() },
 })
 
