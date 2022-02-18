@@ -37,6 +37,7 @@ const TASK_SCHEMA = new Schema({
     details: TASK_DETAILS_SCHEMA,
     priority: { type: String, enum: TASK_PRIORITY_TYPES, default: TASK_PRIORITY_TYPES.low},
     status: { type: String, default: TASK_STATUS_TYPES.idle },
+    active_status: { type: String, default: 'active' },
     created: { type: Date, default: Date.now() },
 })
 
