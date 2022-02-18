@@ -15,6 +15,8 @@ import { checkKeys } from "../middlewares/checkKeys.js"
 import { checkAdmin } from "../middlewares/checkAdmin.js"
 import { ROUTES } from "../../utils/constants.js"
 import { userGetTasks } from "../controllers/userGetTasks.js"
+import { AdminLockAccount } from "../controllers/AdminLockAccount.js"
+import { AdminUnlockAccount } from "../controllers/AdminUnlockAccount.js"
 
 
 
@@ -41,6 +43,9 @@ const userRoutes = app =>{
     app.post([ROUTES.admin_generate_code],checkAdmin, adminGenerateCode)
     app.post([ROUTES.admin_get_customers], checkAdmin, getAllCustomers)
     app.post('/admin/get/stats', checkAdmin, adminGetStats)
+
+    app.post('/admin/lock/account', checkAdmin, AdminLockAccount)
+    app.post('/admin/unlock/account', checkAdmin, AdminUnlockAccount)
 
 }
 
