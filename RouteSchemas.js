@@ -165,4 +165,12 @@ export default function RouteSchemas (Validator){
 
     Connect('/admin/get/customers', adminGetCustomers)
 
+    const unlockAndLockAccount = new Schema.Create({
+        user_id: Schema.isString().min(30).exec(),
+        customer_id: Schema.isString().min(30).exec()
+    })
+
+    Connect('/admin/lock/account', unlockAndLockAccount)
+    Connect('/admin/unlock/account', unlockAndLockAccount)
+
 }
