@@ -32,6 +32,13 @@ export const userGetBuildings = async user_id =>{
             }
         }
 
+        if(userResponse.user[0].role === "admin"){
+            return {
+                type: 'userIsAdmin',
+                success: true,
+            }
+        }
+
 
     }catch(error){
         console.log(error)
