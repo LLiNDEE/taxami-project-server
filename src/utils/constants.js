@@ -67,6 +67,7 @@ export const ERROR_TYPES = {
     taskAlreadyInProgress: 'taskAlreadyInProgress',
     alreadyMember: 'alreadyMember',
     codeError: 'codeError',
+    accountLocked: 'accountLocked',
     error: 'error',
 }
 

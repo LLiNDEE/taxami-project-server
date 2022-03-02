@@ -29,6 +29,13 @@ export const validateLoginCredentials = async data => {
         const userOBJ = await getUserBy('email', email)
         const userData = userOBJ.user[0]
 
+        if(userData.status === 'locked'){
+            return{
+                type: 'accountLocked',
+                success: false,
+            }
+        }
+
         if(userData.role !== 'admin'){
             const userMemberOfBuildings = await getUserBuildings(user._id)
             if(!userMemberOfBuildings.success && userData.role !== 'customer') {
