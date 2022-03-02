@@ -14,7 +14,7 @@ export const userLogin = async (req, res) => {
         if(!isEmailValid) return res.status(400).send(generateError('invalidCredentials'))
 
         const checkLoginCredentials = await validateLoginCredentials(DETAILS)
-        if(!checkLoginCredentials.success) return res.status(401).send(generateError('invalidCredentials'))
+        if(!checkLoginCredentials.success) return res.status(401).send(generateError(checkLoginCredentials.type))
 
         const userDATA = checkLoginCredentials.data
 
