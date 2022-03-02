@@ -8,7 +8,7 @@ export const getUserBuildings = async user_id => {
 
         const buildingQuery = {members: user_id}
         const buildings = await Building.find(buildingQuery)
-        if(!buildings || buildings.length < 1) {
+        if(!buildings) {
             return {
                 type: 'noBuilding',
                 success: false
