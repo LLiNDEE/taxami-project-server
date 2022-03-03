@@ -85,7 +85,6 @@ export default function RouteSchemas (Validator){
         building_id: Schema.isString().exec(),
         task_id: Schema.isString().exec(),
         estimated_time: Schema.isString().exec(),
-        estimated_cost: Schema.isString().exec(),
     })
 
     Connect('/user/take/task', UserTakeTaskSchema)
