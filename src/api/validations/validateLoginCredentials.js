@@ -49,6 +49,7 @@ export const validateLoginCredentials = async data => {
                 type: 'success',
                 success: true,
                 data: {
+                    first_name: userData.first_name,
                     user_id: user._id,
                     email: userData.email,
                     buildings: userData.buildings,
