@@ -172,4 +172,10 @@ export default function RouteSchemas (Validator){
     Connect('/admin/lock/account', unlockAndLockAccount)
     Connect('/admin/unlock/account', unlockAndLockAccount)
 
+    const updateUserSchema = new Schema.Create({
+        user_id: Schema.isString().exec()
+    })
+
+    Connect('/user/update', updateUserSchema)
+
 }
