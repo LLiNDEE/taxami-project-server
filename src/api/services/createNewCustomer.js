@@ -45,7 +45,8 @@ export const createNewCustomer = async ( data ) => {
                 email: data.email,
                 first_name: data.first_name,
                 last_name: data.last_name,
-                password: data.password
+                password: data.password,
+                code_used: data.code
             })
 
             await user.save()
