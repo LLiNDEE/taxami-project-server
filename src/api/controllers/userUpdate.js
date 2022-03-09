@@ -22,7 +22,7 @@ export const userUpdate = async (req, res) => {
         const updateUserResponse = await UpdateUser(user_id, formattedKeys)
         if(!updateUserResponse.success) return res.status(400).send(generateError('failedToUpdate'))
 
-        res.status(200).send(generateSuccessResponse({message: "userUpdateSuccess"}))
+        res.status(200).send(generateSuccessResponse({updated_data: {...formattedKeys} ,message: "userUpdateSuccess"}))
 
     }catch(error){
         res.status(400).send(generateError('failedToUpdate'))
