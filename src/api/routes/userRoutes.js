@@ -19,6 +19,7 @@ import { userGetTasks } from "../controllers/userGetTasks.js"
 import { AdminLockAccount } from "../controllers/AdminLockAccount.js"
 import { AdminUnlockAccount } from "../controllers/AdminUnlockAccount.js"
 import { validateToken } from '../middlewares/validateToken.js'
+import { AdminRemoveMember } from "../controllers/AdminRemoveMember.js"
 
 
 const userRoutes = app =>{
@@ -49,6 +50,8 @@ const userRoutes = app =>{
 
     app.post('/admin/lock/account', validateToken, checkAdmin, AdminLockAccount)
     app.post('/admin/unlock/account', validateToken, checkAdmin, AdminUnlockAccount)
+
+    app.post('/admin/remove/member', checkAdmin, AdminRemoveMember)
 
 }
 

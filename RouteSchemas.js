@@ -49,7 +49,7 @@ export default function RouteSchemas (Validator){
         building_id: Schema.isString().exec(),
         title: Schema.isString().exec(),
         description: Schema.isString().exec(),
-        priority: Schema.isString().exec(),
+        // priority: Schema.isString().exec(),
     })
 
     Connect('/building/add/task', AddTaskSchema)
@@ -177,5 +177,12 @@ export default function RouteSchemas (Validator){
     })
 
     Connect('/user/update', updateUserSchema)
+
+    const adminRemoveMember = new Schema.Create({
+        user_id: Schema.isString().min(30).exec(),
+        member_id: Schema.isString().min(30).exec(),
+    })
+
+    Connect('/admin/remove/member', adminRemoveMember)
 
 }
