@@ -18,7 +18,7 @@ import { ROUTES } from "../../utils/constants.js"
 import { userGetTasks } from "../controllers/userGetTasks.js"
 import { AdminLockAccount } from "../controllers/AdminLockAccount.js"
 import { AdminUnlockAccount } from "../controllers/AdminUnlockAccount.js"
-
+import { validateToken } from '../middlewares/validateToken.js'
 
 
 const userRoutes = app =>{
@@ -29,26 +29,26 @@ const userRoutes = app =>{
 
     app.post(ROUTES.user_create, newUser)
     app.post(ROUTES.user_login, userLogin)
-    app.post(ROUTES.user_building_invite, validateUserUUID, userJoinBuilding)
+    app.post(ROUTES.user_building_invite, validateUserUUID, validateToken, userJoinBuilding)
     app.post(ROUTES.check_code, checkCodeController)
     
-    app.post(ROUTES.user_get_buildings, validateUserUUID, getUserBuildings)
+    app.post(ROUTES.user_get_buildings, validateToken, validateUserUUID, getUserBuildings)
 
-    app.post([ROUTES.user_take_task], validateUserUUID, userTakeTask)
-    app.post([ROUTES.user_complete_task], validateUserUUID, userCompleteTask)
-    app.post([ROUTES.user_leave_task], validateUserUUID, userLeaveTask)
-    app.post(ROUTES.user_get_tasks, validateUserUUID, userGetTasks)
+    app.post([ROUTES.user_take_task], validateToken, validateUserUUID, userTakeTask)
+    app.post([ROUTES.user_complete_task], validateToken, validateUserUUID, userCompleteTask)
+    app.post([ROUTES.user_leave_task], validateToken, validateUserUUID, userLeaveTask)
+    app.post(ROUTES.user_get_tasks, validateToken, validateUserUUID, userGetTasks)
 
-    app.post('/user/update', validateUserUUID, userUpdate)
+    app.post('/user/update', validateToken, validateUserUUID, userUpdate)
 
     app.post('/user/get/role', userGetRole)
 
-    app.post([ROUTES.admin_generate_code],checkAdmin, adminGenerateCode)
-    app.post([ROUTES.admin_get_customers], checkAdmin, getAllCustomers)
-    app.post('/admin/get/stats', checkAdmin, adminGetStats)
+    app.post([ROUTES.admin_generate_code],validateToken, checkAdmin, adminGenerateCode)
+    app.post([ROUTES.admin_get_customers],validateToken, checkAdmin, getAllCustomers)
+    app.post('/admin/get/stats', validateToken, checkAdmin, adminGetStats)
 
-    app.post('/admin/lock/account', checkAdmin, AdminLockAccount)
-    app.post('/admin/unlock/account', checkAdmin, AdminUnlockAccount)
+    app.post('/admin/lock/account', validateToken, checkAdmin, AdminLockAccount)
+    app.post('/admin/unlock/account', validateToken, checkAdmin, AdminUnlockAccount)
 
 }
 
