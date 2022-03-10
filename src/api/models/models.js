@@ -41,6 +41,11 @@ const TASK_SCHEMA = new Schema({
     created: { type: Date, default: Date.now() },
 })
 
+const buildingPermissions = {
+    member_id: { type: String },
+    permissions: [{ type: String, enum: BUILDING_PERMISSIONS}]
+}
+
 const BUILDING_SCHEMA = new Schema({
     _id: { type: String, default: () => uuidv4() },
     user_id: String,
@@ -49,12 +54,10 @@ const BUILDING_SCHEMA = new Schema({
     members: [{ type: String, default: undefined }],
     status: { type: String, enum: BUILDING_STATUS_TYPES, default: BUILDING_STATUS_TYPES.active },
     created: { type: Date, default: Date.now() },
+    permissions: { type: Array },
 })
 
-const buildingPermissions = {
-    member_id: { type: String },
-    permissions: { type: Array, enum: BUILDING_PERMISSIONS}
-}
+
 
 const CODES_SCHEMA = new Schema({
     _id: { type: String, default: () => uuidv4() },
