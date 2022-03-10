@@ -5,10 +5,14 @@ export const getStats = async () => {
 
         const amountOfBuildings = await Building.countDocuments()
 
+        const Workers = await User.countDocuments({role: 'worker'})
+
+
         return {
             type: 'success',
             success: true,
             amountOfBuildings: amountOfBuildings,
+            amountOfWorkers: Workers
         }
 
     }catch(error){

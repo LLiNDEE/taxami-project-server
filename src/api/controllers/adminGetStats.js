@@ -9,7 +9,7 @@ export const adminGetStats = async (req, res) => {
         const getStatsResponse = await getStats()
         if(!getStatsResponse.success) return res.status(400).send(generateError('error'))
 
-        res.status(200).send(generateSuccessResponse({stats: getStatsResponse.amountOfBuildings}))
+        res.status(200).send(generateSuccessResponse({amountOfBuildings: getStatsResponse.amountOfBuildings, amountOfWorkers: getStatsResponse.amountOfWorkers}))
 
 
     }catch(error){
