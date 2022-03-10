@@ -185,4 +185,11 @@ export default function RouteSchemas (Validator){
 
     Connect('/admin/remove/member', adminRemoveMember)
 
+    const buildingAddPermissions = new Schema.Create({
+        user_id: Schema.isString().min(30).exec(),
+        member_id: Schema.isString().min(30).exec(),
+    })
+
+    Connect('/building/add/permissions', buildingAddPermissions)
+
 }
