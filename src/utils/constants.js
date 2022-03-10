@@ -37,6 +37,12 @@ export const TASK_PRIORITY_TYPES = {
     high: 'high',
 }
 
+export const BUILDING_PERMISSIONS = {
+    addTask: 'addTask',
+    removeTask: 'removeTask',
+    generateInvite: 'generateInvite',
+}
+
 export const ERROR_TYPES = {
     invalidParams: 'invalid_params',
     invalidPassword: 'invalidPASsword',
