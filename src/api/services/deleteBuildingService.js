@@ -24,20 +24,13 @@ export const deleteBuildingService = async data => {
             }
         }
 
-        const tasks = building.tasks
-
-        console.log(tasks)
-
-        const taskQuery = {building_id: building_id}
-        // await Task.findByIdAndDelete(taskQuery)
-
-        // const userQuery = {tasks: {$in: tasks}}
-        // await User.updateMany(userQuery, {$pull: {tasks: tasks }})
-
-        // await Building.deleteOne(buildingQuery)
-
-        // await User.findOneAndUpdate({_id: user_id}, {$pull: {buildings: building_id}})
-
+        const tasksID = building.tasks
+        
+        if(tasksID.length > 0){
+            await Task.deleteMany({_id: {$in: tasksID}})
+            await User.updateMany({tasks: {$in: tasksID}}, {$pull: {tasks: {$in: tasksID}}})
+        }
+        await Building.findOneAndDelete({_id: building_id})
 
         return {
             type: 'success',
