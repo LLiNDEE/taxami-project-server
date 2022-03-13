@@ -192,5 +192,7 @@ export default function RouteSchemas (Validator){
     })
 
     Connect('/building/add/permissions', buildingAddPermissions)
+    Connect('/building/remove/permissions', buildingAddPermissions)
+
 
 }

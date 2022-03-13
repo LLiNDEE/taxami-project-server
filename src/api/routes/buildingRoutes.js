@@ -12,6 +12,7 @@ import { ROUTES } from "../../utils/constants.js"
 import { removeTask } from "../controllers/removeTask.js"
 import { buildingGetTasks } from "../controllers/buildingGetTasks.js"
 import { getMembers } from "../controllers/getMembers.js"
+import { BuildingRemovePermission } from '../controllers/BuildingRemovePermission.js'
 import { BuildingAddPermissions } from "../controllers/BuildingAddPermissions.js"
 
 const buildingRoutes = app =>{
@@ -31,6 +32,7 @@ const buildingRoutes = app =>{
     app.post(ROUTES.building_remove_task, validateToken, validateUserUUID, removeTask)
 
     app.post('/building/add/permissions', BuildingAddPermissions)
+    app.post('/building/remove/permissions', BuildingRemovePermission)
 
 }
 
