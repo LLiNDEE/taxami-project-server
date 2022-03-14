@@ -14,6 +14,7 @@ import { buildingGetTasks } from "../controllers/buildingGetTasks.js"
 import { getMembers } from "../controllers/getMembers.js"
 import { BuildingRemovePermission } from '../controllers/BuildingRemovePermission.js'
 import { BuildingAddPermissions } from "../controllers/BuildingAddPermissions.js"
+import { BuildingGetPermissions } from "../controllers/BuildingGetPermissions.js"
 
 const buildingRoutes = app =>{
 
@@ -33,6 +34,8 @@ const buildingRoutes = app =>{
 
     app.post('/building/add/permissions', BuildingAddPermissions)
     app.post('/building/remove/permissions', BuildingRemovePermission)
+
+    app.post('/building/get/permissions', validateToken, validateUserUUID, BuildingGetPermissions)
 
 }
 
