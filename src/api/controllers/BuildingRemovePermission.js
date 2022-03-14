@@ -2,7 +2,7 @@ import { generateError } from '../../utils/errorHandler.js'
 import { generateSuccessResponse } from '../../utils/successHandler.js'
 import { BuildingRemovePermission as removePermission } from '../../api/services/BuildingRemovePermission.js'
 
-export const BuildingAddPermissions = async (req, res) => {
+export const BuildingRemovePermission = async (req, res) => {
     try{
 
         const { user_id, ...data } = req.body

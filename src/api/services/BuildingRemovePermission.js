@@ -1,7 +1,7 @@
 import { Building } from "../models/models.js";
 
 
-export const addPermissions = async data => {
+export const BuildingRemovePermission = async data => {
     try{
 
 
