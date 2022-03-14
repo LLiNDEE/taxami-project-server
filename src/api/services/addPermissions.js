@@ -34,7 +34,7 @@ export const addPermissions = async data => {
     
     
             if(isFound){
-                await Building.findOneAndUpdate({"permissions.member_id": member_id}, {$push: {"permissions.$.permissions": permissions}})
+                await Building.findOneAndUpdate({"permissions.member_id": member_id}, {$set: {"permissions.$.permissions": permissions}})
             }
             
     
@@ -45,14 +45,14 @@ export const addPermissions = async data => {
                     permissions: permissions
                 }
     
-                await Building.findOneAndUpdate(buildingQuery, {$push: {permissions: permissionsObject}})
+                await Building.findOneAndUpdate(buildingQuery, {$set: {permissions: permissionsObject}})
             }
         }else{
             const permissionsObject = {
                 member_id: member_id,
                 permissions: [permissions],
             }
-            await Building.findOneAndUpdate(buildingQuery, {$push: {permissions: permissionsObject}})
+            await Building.findOneAndUpdate(buildingQuery, {$set: {permissions: permissionsObject}})
         }
 
         return {
