@@ -51,7 +51,7 @@ const userRoutes = app =>{
     app.post('/admin/lock/account', validateToken, checkAdmin, AdminLockAccount)
     app.post('/admin/unlock/account', validateToken, checkAdmin, AdminUnlockAccount)
 
-    app.post('/admin/remove/member', checkAdmin, AdminRemoveMember)
+    app.post('/admin/remove/customer', checkAdmin, AdminRemoveMember)
 
 }
 
