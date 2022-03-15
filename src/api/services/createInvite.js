@@ -1,18 +1,23 @@
 import { Code, Building } from '../models/models.js'
+import { checkPermission } from '../validations/CheckPermission.js'
 
 export const createInvite = async (user_id, building_id) => {
     try{
         
-        const building = await Building.find({_id: building_id})
+        const building = await Building.findOne({_id: building_id})
 
-        if(!building || building.length < 1){
+        if(!building){
             return {
                 type: 'noBuilding',
                 success: false
             }
         }
 
-        if(building[0].user_id !== user_id){
+        const permissions = building?.permissions
+
+        const doesUserHavePermission = checkPermission(user_id, 'generateInvite', permissions)
+
+        if(building.user_id !== user_id && !doesUserHavePermission){
             return {
                 type: 'noPermission',
                 success: false
