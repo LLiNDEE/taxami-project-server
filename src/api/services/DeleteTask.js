@@ -1,10 +1,13 @@
-import { Task } from "../models/models.js";
+import { Task, Building } from "../models/models.js";
 
 
 export const DeleteTask = async data => {
     try{
 
         const foundTask = await Task.findOne({_id: data})
+
+        const buildingQuery = {_id: foundTask.building_id}
+
         if(!foundTask){
             return {
                 type: 'noTask',
@@ -13,6 +16,7 @@ export const DeleteTask = async data => {
         }
 
         await Task.findOneAndDelete({_id: data})
+        await Building.findOneAndUpdate(buildingQuery, {$pull: {tasks: data}})
 
         return {
             type: 'success',
